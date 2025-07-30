@@ -2,7 +2,7 @@
 
 Feature: Individuals Earning Over Thresholds And Between 22 and SPA
 
-	Set of scenarios for individuals earning below the relevant earnings thresholds
+	Set of scenarios for individuals earning GBP 10k and over and aged between 22 and SPA
 
 	Rule: Employees aged 22 that earn at least GBP 10000 per year without postponement
 
@@ -15,14 +15,14 @@ Feature: Individuals Earning Over Thresholds And Between 22 and SPA
 				| Eligibility      | no         |        |
 
 		@no_postponement
-		Scenario: Unassessed monthly paid employee aged 22 earning GBP 833 should be assessed as eligible jobholder
+		Scenario: Unassessed monthly paid employee aged 22 earning GBP 833 should be assessed as eligible
 			Given a monthly pay run with pay date 2025-04-20 and pay period from 2025-04-01 to 2025-04-30
 			And the employee earns GBP 833.00 in the pay period
 			When the pay run is processed
 			Then the employee should be assessed as 'an eligible jobholder'
 
 		@no_postponement
-		Scenario: Unassessed weekly paid employee aged 22 earning GBP 192 should be assessed as eligible jobholder
+		Scenario: Unassessed weekly paid employee aged 22 earning GBP 192 should be assessed as eligible
 			Given a weekly pay run with pay date 2025-04-20 and pay period from 2025-04-01 to 2025-04-30
 			And the employee earns GBP 192.00 in the pay period
 			When the pay run is processed
@@ -40,14 +40,14 @@ Feature: Individuals Earning Over Thresholds And Between 22 and SPA
 				| Eligibility      | no         |        |
 
 		@no_postponement
-		Scenario: Unassessed monthly paid employee aged just under SPA earning GBP 833 should be assessed as eligible jobholder
+		Scenario: Unassessed monthly paid employee aged just under SPA earning GBP 833 should be assessed as eligible
 			Given a monthly pay run with pay date 2025-04-20 and pay period from 2025-04-01 to 2025-04-30
 			And the employee earns GBP 833.00 in the pay period
 			When the pay run is processed
 			Then the employee should be assessed as 'an eligible jobholder'
 
 		@no_postponement
-		Scenario: Unassessed weekly paid employee aged just under SPA earning GBP 192 should be assessed as eligible jobholder
+		Scenario: Unassessed weekly paid employee aged just under SPA earning GBP 192 should be assessed as eligible
 			Given a weekly pay run with pay date 2025-04-20 and pay period from 2025-04-01 to 2025-04-30
 			And the employee earns GBP 192.00 in the pay period
 			When the pay run is processed
@@ -98,9 +98,9 @@ Feature: Individuals Earning Over Thresholds And Between 22 and SPA
 			Then the employee should be assessed as 'postponed' with a deferral date of 2025-05-01
 
 		@with_company_postponement
-		Scenario: Unassessed weekly paid employee aged just under SPA earning under GBP 192 should be assessed as postponed during postponement
+		Scenario: Unassessed weekly paid employee aged just under SPA earning GBP 192 should be assessed as postponed during postponement
 			Given a weekly pay run with pay date 2025-04-07 and pay period from 2025-04-01 to 2025-04-07
-			And the employee earns GBP 191.99 in the pay period
+			And the employee earns GBP 192.00 in the pay period
 			When the pay run is processed
 			Then the employee should be assessed as 'postponed' with a deferral date of 2025-05-01
 
@@ -116,18 +116,18 @@ Feature: Individuals Earning Over Thresholds And Between 22 and SPA
 				| Eligibility       | no         |        |
 
 		@with_company_postponement
-		Scenario: Unassessed monthly paid employee aged 22 earning just under GBP 833 should be assessed as non-eligible under postponement
+		Scenario: Unassessed monthly paid employee aged 22 earning GBP 833 should be assessed as eligible under postponement
 			Given a monthly pay run with pay date 2025-04-20 and pay period from 2025-04-01 to 2025-04-30
 			And the employee earns GBP 833.00 in the pay period
 			When the pay run is processed
-			Then the employee should be assessed as 'a non-eligible jobholder'
+			Then the employee should be assessed as 'an eligible jobholder'
 
 		@with_company_postponement
-		Scenario: Unassessed weekly paid employee aged 22 earning under GBP 192 should be assessed as non-eligible under postponement
+		Scenario: Unassessed weekly paid employee aged 22 earning GBP 192 should be assessed as eligible under postponement
 			Given a weekly pay run with pay date 2025-04-07 and pay period from 2025-04-01 to 2025-04-07
 			And the employee earns GBP 192.00 in the pay period
 			When the pay run is processed
-			Then the employee should be assessed as 'a non-eligible jobholder'
+			Then the employee should be assessed as 'an eligible jobholder'
 
 	Rule: Employees just under SPA that earn at least GBP 10000 per year once postponement ends
 
@@ -141,15 +141,15 @@ Feature: Individuals Earning Over Thresholds And Between 22 and SPA
 				| Eligibility       | no         |        |
 
 		@with_company_postponement
-		Scenario: Unassessed monthly paid employee aged just under SPA earning just under GBP 833 should be assessed as non-eligible under postponement
+		Scenario: Unassessed monthly paid employee aged just under SPA earning GBP 833 should be assessed as eligible under postponement
 			Given a monthly pay run with pay date 2025-04-20 and pay period from 2025-04-01 to 2025-04-30
 			And the employee earns GBP 833.00 in the pay period
 			When the pay run is processed
-			Then the employee should be assessed as 'a non-eligible jobholder'
+			Then the employee should be assessed as 'an eligible jobholder'
 
 		@with_company_postponement
-		Scenario: Unassessed weekly paid employee aged just under SPA earning under GBP 192 should be assessed as non-eligible under postponement
+		Scenario: Unassessed weekly paid employee aged just under SPA earning under GBP 192 should be assessed as eligible under postponement
 			Given a weekly pay run with pay date 2025-04-07 and pay period from 2025-04-01 to 2025-04-07
 			And the employee earns GBP 192.00 in the pay period
 			When the pay run is processed
-			Then the employee should be assessed as 'a non-eligible jobholder'			
+			Then the employee should be assessed as 'an eligible jobholder'			
