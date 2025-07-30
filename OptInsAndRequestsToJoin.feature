@@ -1,8 +1,8 @@
-﻿# Published under Creative Commons Zero License (CC0 1.0 Universal)
+# Published under Creative Commons Zero License (CC0 1.0 Universal)
 
-Feature: Seasonal Worker Tests
+Feature: Opt-in And Request To Join Tests
 
-	Set of scenarios covering seasonal workers and eligibility postponement
+	Set of scenarios covering opt-ins and requests to join
 
     # WIP
 
